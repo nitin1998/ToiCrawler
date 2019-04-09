@@ -25,15 +25,15 @@ app.get("/", function(req, resp) {
                 var items = $(".media-heading");
                 console.log(items);
                 var html = "";
-                var movie = [];
+                var NewsData = [];
                 for(var i = 0; i < items.length; i++) {
-                    var movieName = $($(items[i]).find('a')[0]).html();
-                    var movieYear = $($(items[i]).find('span')[0]).html();
-                    html += (i + " -> " + movieYear + ":" + movieName);
-                    movieName = movieName.replace(/\&nbsp;/g, '');  //  replace &nbsp; with '' so that it will not be passed to HTML
-                    movie.push(movieName);  //  adding the movieName to array
+                    var NewsHeadLine = $($(items[i]).find('a')[0]).html();
+                    var NewsTime = $($(items[i]).find('span')[0]).html();
+                    html += (i + " -> " + NewsTime + ":" + NewsHeadLine);
+                    NewsHeadLine = NewsHeadLine.replace(/\&nbsp;/g, '');  //  replace &nbsp; with '' so that it will not be passed to HTML
+                    NewsData.push(NewsHeadLine);  //  adding the NewsHeadLine to array
                 }
-                resp.render('home', {data: movie});
+                resp.render('home', {data: NewsData});
             }
             done();
         }
